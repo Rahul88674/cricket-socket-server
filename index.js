@@ -149,7 +149,12 @@ app.get('/', (req, res) => {
     res.json({ message: 'Cricket Socket Server is running! ⚡' });
 });
 
-const PORT = 3000;
+// const PORT = 3000;
+// server.listen(PORT, () => {
+//     console.log(`🚀 Socket server running on http://localhost:${PORT}`);
+// });
+
+const PORT = process.env.PORT || 3000;
 server.listen(PORT, () => {
-    console.log(`🚀 Socket server running on http://localhost:${PORT}`);
+    console.log(`🚀 Socket server running on port ${PORT}`);
 });
