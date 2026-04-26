@@ -82,11 +82,22 @@ app.use(express.json());
 
 const server = http.createServer(app);
 
+// const io = new Server(server, {
+//     cors: {
+//         origin: '*',
+//         methods: ['GET', 'POST']
+//     }
+// });
 const io = new Server(server, {
     cors: {
         origin: '*',
         methods: ['GET', 'POST']
-    }
+    },
+    transports: ['polling', 'websocket'],
+    pingTimeout: 60000,
+    pingInterval: 25000,
+    upgradeTimeout: 30000,
+    allowUpgrades: true,
 });
 
 // Store latest scores in memory
